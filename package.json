@@ -1,7 +1,7 @@
 {
-  "name": "",
-  "description": "",
-  "keywords": [],
+  "name": "eswalker",
+  "description": "very simple walker for esprima AST",
+  "keywords": ["AST", "abstract syntax tree", "esprima"],
   "main": "./index",
   "version": "0.0.1",
   "maintainers": [
@@ -19,6 +19,6 @@
   "scripts": {
     "test": "make test-coveralls"
   },
-  "repository": "git://github.com/Swatinem/cow.git",
+  "repository": "git://github.com/Swatinem/eswalker.git",
   "license": "LGPLv3"
 }
