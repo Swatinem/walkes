@@ -1,9 +1,9 @@
 {
   "name": "walkes",
   "description": "very simple walker for esprima AST",
+  "version": "0.1.0",
   "keywords": ["AST", "abstract syntax tree", "esprima"],
   "main": "./index",
-  "version": "0.0.1",
   "maintainers": [
     "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
   ],

@@ -51,8 +51,8 @@ describe('walker', function () {
 			Type: function (recurse) {
 				recurse(this.child);
 			},
-			Type2: function () {
-				walker.checkProps(this.child);
+			Type2: function (recurse) {
+				walker.checkProps.call(this.child, recurse);
 			},
 			default: function () {
 				should.fail('should not be reached');
@@ -110,5 +110,71 @@ describe('walker', function () {
 			}
 		});
 		}).should.throw();
+	});
+	it('should return the original ast', function () {
+		var ast = {
+			type: 'Type1',
+			prop: {type: 'Type2'},
+			arr: [{type: 'Type3'}]
+		};
+		walker(ast, {}).should.eql(ast);
+	});
+	it('should return the original even if it is skipped via range', function () {
+		var ast = {
+			type: 'Type1',
+			prop: {
+				type: 'Type2',
+				range: [0,5],
+				sub: {type: 'Type4'}
+			},
+			arr: [{type: 'Type3'}]
+		};
+		walker(ast, {Type4: function () {
+			should.fail('should not be reached');
+		}}, 10).should.eql(ast);
+	});
+	it('should be able to transform objects', function () {
+		var transformed = {
+			type: 'Type2',
+			prop2: 'prop2'
+		};
+		walker({
+			type: 'Type',
+			prop1: 'prop1'
+		}, {default: function () {
+			return transformed;
+		}}).should.eql(transformed);
+	});
+	it('should transform properties', function () {
+		var transformed = {
+			type: 'Type2',
+			prop2: 'prop2'
+		};
+		walker({
+			type: 'SomeType',
+			prop1: {
+				type: 'Type'
+			}
+		}, {Type: function () {
+			return transformed;
+		}}).prop1.should.eql(transformed);
+	});
+	it('should transform array elements', function () {
+		var transformed = {
+			type: 'Type2',
+			prop2: 'prop2'
+		};
+		var mapped = walker({
+			type: 'SomeType',
+			arr: [
+				{type: 'Type'},
+				{type: 'Type'},
+				{type: 'Type'}
+			]
+		}, {Type: function () {
+			return transformed;
+		}});
+		mapped.arr[0].should.eql(transformed);
+		mapped.arr[2].should.eql(transformed);
 	});
 });
