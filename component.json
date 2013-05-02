@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "keywords": ["AST", "abstract syntax tree", "esprima"],
   "main": "./lib/index.js",
-  "scripts": ["./lib/index.js"],
+  "scripts": ["lib/index.js"],
   "maintainers": [
     "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
   ],
