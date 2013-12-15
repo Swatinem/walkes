@@ -12,14 +12,13 @@ very simple walker for esprima AST
 
 ## Usage
 
+
 ```js
 walker(esprima.parse("…"), {
-	MemberExpression: function (recurse, stop) {
-		// the node can be used as `this`
-		this.object;
+	MemberExpression: function (node, recurse, stop) {
 		// you are responsible to call `recurse()` on all the children yourself
-		recurse(this.object);
-		recurse(this.property);
+		recurse(node.object);
+		recurse(node.property);
 	},
 	default: function (recurse, stop) {
 		// call or throw `stop` to completely stop walking.

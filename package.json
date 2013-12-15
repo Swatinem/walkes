@@ -1,7 +1,7 @@
 {
   "name": "walkes",
   "description": "very simple walker for esprima AST",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": ["AST", "abstract syntax tree", "esprima"],
   "main": "./index",
   "maintainers": [
