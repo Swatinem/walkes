@@ -7,9 +7,9 @@ describe('walker', function () {
 		};
 		var called = false;
 		walker(obj, {
-			Type: function () {
+			Type: function (node) {
 				called = true;
-				obj.should.equal(this);
+				obj.should.equal(node);
 			}
 		});
 		called.should.eql(true);
@@ -20,9 +20,9 @@ describe('walker', function () {
 		};
 		var called = false;
 		walker(obj, {
-			default: function () {
+			default: function (node) {
 				called = true;
-				obj.should.equal(this);
+				obj.should.equal(node);
 			}
 		});
 		called.should.eql(true);
@@ -48,11 +48,11 @@ describe('walker', function () {
 	});
 	it('should require objects to have `type`', function () {
 		var fnTable = {
-			Type: function (recurse) {
-				recurse(this.child);
+			Type: function (node, recurse) {
+				recurse(node.child);
 			},
-			Type2: function (recurse) {
-				walker.checkProps.call(this.child, recurse);
+			Type2: function (node, recurse) {
+				walker.checkProps.call(node.child, recurse);
 			},
 			default: function () {
 				should.fail('should not be reached');
@@ -79,7 +79,7 @@ describe('walker', function () {
 				type: 'Type2'
 			}
 		}, {
-			Type1: function (recurse, stop) {
+			Type1: function (node, recurse, stop) {
 				stop();
 			},
 			Type2: function () {
