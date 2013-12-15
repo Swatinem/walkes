@@ -46,13 +46,39 @@ describe('walker', function () {
 		});
 		called.should.eql(3);
 	});
+	it('should support `checkProps`', function () {
+		var called = false;
+		var fnTable = {
+			Type: function (node, recurse) {
+				walker.checkProps(node, recurse);
+			},
+			Type2: function () {
+				called = true;
+			}
+		};
+		walker({
+			type: 'Type',
+			child: {
+				type: 'Type2'
+			}
+		}, fnTable);
+		called.should.be.true;
+		called = false;
+		walker({
+			type: 'Type',
+			arr: [{
+				type: 'Type2'
+			}]
+		}, fnTable);
+		called.should.be.true;
+	});
 	it('should require objects to have `type`', function () {
 		var fnTable = {
 			Type: function (node, recurse) {
 				recurse(node.child);
 			},
 			Type2: function (node, recurse) {
-				walker.checkProps.call(node.child, recurse);
+				walker.checkProps(node.child, recurse);
 			},
 			default: function () {
 				should.fail('should not be reached');

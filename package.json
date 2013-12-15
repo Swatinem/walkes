@@ -9,6 +9,9 @@
   ],
   "dependencies": {
   },
+  "peerDependencies": {
+    "esprima": "~ 1.0"
+  },
   "devDependencies": {
     "mocha": "*",
     "should": "*",

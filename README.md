@@ -10,8 +10,13 @@ very simple walker for esprima AST
 
     $ npm install walkes
 
-## Usage
+## Compatibility warning
 
+`walkes ~ 0.1.0` used to pass in the node as `this`. This changed with version
+`~ 0.2.0` which passes it as the first parameter. Please keep that in mind, and
+sorry for the inconvenience.
+
+## Usage
 
 ```js
 walker(esprima.parse("…"), {
@@ -19,6 +24,8 @@ walker(esprima.parse("…"), {
 		// you are responsible to call `recurse()` on all the children yourself
 		recurse(node.object);
 		recurse(node.property);
+		// or use `walker.checkProps` to walk all child properties (also takes care of arrays)
+		walker.checkProps(node, recurse);
 	},
 	default: function (recurse, stop) {
 		// call or throw `stop` to completely stop walking.
