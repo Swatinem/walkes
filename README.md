@@ -10,6 +10,10 @@ very simple walker for esprima AST
 
     $ npm install walkes
 
+Or as a `component`:
+
+    $ component install Swatinem/walkes
+
 ## Compatibility warning
 
 `walkes ~ 0.1.0` used to pass in the node as `this`. This changed with version
