@@ -1,3 +1,8 @@
+/* vim: set shiftwidth=2 tabstop=2 noexpandtab textwidth=80 wrap : */
+"use strict";
+
+var should = require('should');
+
 var walker = require('../');
 
 describe('walker', function () {
@@ -83,7 +88,7 @@ describe('walker', function () {
 			default: function () {
 				should.fail('should not be reached');
 			}
-		}
+		};
 		walker({no: 'Type'}, fnTable);
 		walker({
 			type: 'Type',

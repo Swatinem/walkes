@@ -1,15 +1,14 @@
 {
   "name": "walkes",
-  "description": "very simple walker for esprima AST",
+  "repo": "Swatinem/walkes",
   "version": "0.2.0",
+  "description": "very simple walker for esprima AST",
   "keywords": ["AST", "abstract syntax tree", "esprima"],
-  "main": "./lib/index.js",
-  "scripts": ["lib/index.js"],
-  "maintainers": [
-    "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
+  "main": "index.js",
+  "scripts": [
+    "index.js"
   ],
   "dependencies": {
   },
-  "repo": "https://raw.github.com/Swatinem/walkes",
   "license": "LGPLv3"
 }

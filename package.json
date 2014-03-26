@@ -13,11 +13,11 @@
     "esprima": "~ 1.0"
   },
   "devDependencies": {
+    "istanbul": "*",
     "mocha": "*",
     "should": "*",
-    "jscoverage": "*",
     "coveralls": "*",
-    "mocha-lcov-reporter": "*"
+    "jshint": "*"
   },
   "scripts": {
     "test": "make test-coveralls"
