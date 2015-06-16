@@ -1,16 +1,13 @@
 {
   "name": "walkes",
-  "description": "very simple walker for esprima AST",
-  "version": "0.2.0",
-  "keywords": ["AST", "abstract syntax tree", "esprima"],
+  "description": "very simple walker for estree AST",
+  "version": "0.2.1",
+  "keywords": ["AST", "abstract syntax tree", "estree"],
   "main": "./index",
   "maintainers": [
     "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
   ],
   "dependencies": {
-  },
-  "peerDependencies": {
-    "esprima": "~ 1.0"
   },
   "devDependencies": {
     "istanbul": "*",
@@ -23,5 +20,5 @@
     "test": "make test-coveralls"
   },
   "repository": "git://github.com/Swatinem/walkes.git",
-  "license": "LGPLv3"
+  "license": "LGPL-3.0"
 }

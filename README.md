@@ -1,6 +1,6 @@
 # walker, texas ranger
 
-very simple walker for esprima AST
+very simple walker for estree AST
 
 [![Build Status](https://travis-ci.org/Swatinem/walkes.png?branch=master)](https://travis-ci.org/Swatinem/walkes)
 [![Coverage Status](https://coveralls.io/repos/Swatinem/walkes/badge.png?branch=master)](https://coveralls.io/r/Swatinem/walkes)
@@ -22,8 +22,12 @@ sorry for the inconvenience.
 
 ## Usage
 
+walkes works with an [estree spec](https://github.com/estree/estree) compatible
+ast. You are free to choose whichever parser you would like, such as esprima,
+espree, babel, acorn or others.
+
 ```js
-walker(esprima.parse("…"), {
+walker(espree.parse("…"), {
 	MemberExpression: function (node, recurse, stop) {
 		// you are responsible to call `recurse()` on all the children yourself
 		recurse(node.object);
@@ -43,5 +47,4 @@ walker(esprima.parse("…"), {
 
 ## License
 
-  LGPLv3
-
+  LGPL-3.0
